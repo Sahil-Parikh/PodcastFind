@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Finder Results</title>
+</head>
+<body>
+    <h1>Podcast Results for {{ person_name }}</h1>
+    
+    <h2>Spotify Results:</h2>
+    <ul>
+        {% for item in results.spotify.episodes.items %}
+        <li>
+            <a href="{{ item.external_urls.spotify }}">{{ item.name }}</a> - {{ item.release_date }}
+        </li>
+        {% endfor %}
+    </ul>
+    
+    <h2>YouTube Results:</h2>
+    <ul>
+        {% for item in results.youtube.items %}
+        <li>
+            <a href="https://youtube.com/watch?v={{ item.id.videoId }}">{{ item.snippet.title }}</a> - {{ item.snippet.publishedAt }}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
